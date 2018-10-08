@@ -1,6 +1,8 @@
 defmodule Combinatorics do
   @moduledoc """
-  Documentation for Combinatorics.
+  Functions of Combinatorics.
+
+  See [Combinatorics - Wikipedia](https://en.wikipedia.org/wiki/Combinatorics), etc.
   """
 
   @doc """
@@ -8,12 +10,17 @@ defmodule Combinatorics do
 
       iex> Combinatorics.permutation([1, 2, 3])
       [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
+  """
+  def permutation(list), do: permutation(list, Enum.count(list))
+
+  @doc """
+  Generate Permutaitons.
+
       iex> Combinatorics.permutation([1, 2, 3], 2)
       [[1, 2], [1, 3], [2, 1], [2, 3], [3, 1], [3, 2]]
       iex> Combinatorics.permutation([1, 2, 3], 0)
       []
   """
-  def permutation(list), do: permutation(list, Enum.count(list))
   def permutation(_, n) when n <= 0, do: []
   def permutation(list, 1), do: Enum.map(list, &[&1])
   def permutation(list, n) do
